@@ -1,0 +1,13 @@
+<section layout-padding layout="row" layout-wrap>
+  <div flex="50" ng-repeat="pedido in $ctrl.pedidos">
+    <md-card ng-click="$ctrl.abrirPedido(pedido)">
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">Cliente: {{pedido.cliente.nome}}</span>
+          <span class="md-subhead">Data: {{pedido.data | date}}</span>
+          <span class="md-subhead">Itens: {{pedido.quantidadeItens}}</span>
+        </md-card-title-text>
+      </md-card-title>
+    </md-card>
+  </div>
+</section>

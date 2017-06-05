@@ -1,0 +1,33 @@
+// @import 'app-block';
+//
+
+// ui-view {
+//   display: block;
+// }
+// app-clientes {
+//   display: block;
+// }
+// app-conteudo {
+//   display: block;
+// }
+//
+// md-datepicker {
+//   position: relative;
+//   left: -16px;
+//
+//   .md-datepicker-input-container {
+//     margin-left: 0;
+//   }
+//
+//   .md-datepicker-button.md-icon-button {
+//     margin-right: 0;
+//   }
+// }
+//
+app-header {
+  display: block;
+  background: rgb(63,81,181);
+  .md-button {
+    color: white;
+  }
+}

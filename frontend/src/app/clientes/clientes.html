@@ -1,0 +1,74 @@
+<section layout-padding>
+  <form>
+    <div layout="row" layout-wrap>
+      <md-input-container flex="100">
+        <label>Nome</label>
+        <input required ng-model="$ctrl.novoCliente.nome">
+      </md-input-container>
+
+      <md-input-container flex="50">
+        <label>CPF</label>
+        <input required ng-model="$ctrl.novoCliente.cpf">
+      </md-input-container>
+
+      <md-input-container flex="50">
+        <label>Email</label>
+        <input required ng-model="$ctrl.novoCliente.email" type="email">
+      </md-input-container>
+
+      <md-input-container flex="50">
+        <label>Estado</label>
+        <md-select required ng-model="$ctrl.estadoSelecionado" ng-change="$ctrl.estadoAlterado($ctrl.estadoSelecionado)">
+          <md-option ng-value="null"><em>Nenhum</em></md-option>
+          <md-option ng-repeat="estado in $ctrl.estados" ng-value="estado">
+            {{estado.nome}} - {{estado.uf}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+      <md-input-container flex="50">
+        <label>Cidade</label>
+        <md-select required ng-model="$ctrl.novoCliente.cidade">
+          <md-option ng-value="null"><em>Nenhuma</em></md-option>
+          <md-option ng-repeat="cidade in $ctrl.cidades" ng-value="cidade">
+            {{cidade.nome}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+      <md-input-container flex="50">
+        <label>Bairro</label>
+        <input required ng-model="$ctrl.novoCliente.bairro">
+      </md-input-container>
+
+      <div flex="50">
+        <md-datepicker required ng-model="$ctrl.novoCliente.dataNascimento" ng-model="ctrl.myDate" md-placeholder="Data de nascimento"></md-datepicker>
+      </div>
+    </div>
+
+    <md-button type="submit" ng-click="$ctrl.salvar()" class="md-fab md-fab-bottom-right" aria-label="Eat cake">
+      <md-icon>add</md-icon>
+    </md-button>
+  </form>
+
+</section>
+
+<section layout-padding layout="row" layout-wrap>
+  <div flex="50" ng-repeat="cliente in $ctrl.clientes">
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{cliente.nome}}</span>
+          <span class="md-subhead">{{cliente.email}}</span>
+          <span class="md-subhead">{{cliente.dataNascimento | date}}</span>
+          <span class="md-subhead">{{cliente.cpf}}</span>
+          <span class="md-subhead">{{cliente.bairro}}</span>
+          <span class="md-subhead">{{cliente.cidade.nome}} - {{cliente.cidade.estado}}</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-actions layout="row" layout-align="end center">
+          <md-button ng-click="$ctrl.novoPedido(cliente)">Criar pedido</md-button>
+        </md-card-actions>
+    </md-card>
+  </div>
+</section>

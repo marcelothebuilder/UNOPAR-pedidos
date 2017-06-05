@@ -1,0 +1,17 @@
+<section layout-padding>
+  <form name="$ctrl.form">
+    <div layout="row" layout-wrap>
+      <md-select placeholder="Escolher novo estado" ng-model="$ctrl.novoPasso.estado" md-on-open="$ctrl.buscarEstados()" style="min-width: 200px;">
+        <md-option ng-value="estado" ng-repeat="estado in $ctrl.estadosEntrega">{{estado.descricao}}</md-option>
+      </md-select>
+
+      <md-input-container flex="100">
+        <label>Descrição</label>
+        <textarea ng-model="$ctrl.novoPasso.descricao" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+      </md-input-container>
+    </div>
+
+    <md-button ng-click="$ctrl.onCancel()">Cancelar</md-button>
+    <md-button class="md-primary md-raised" type="submit" ng-disabled="$ctrl.form.$invalid" ng-click="$ctrl.adicionar()">Adicionar</md-button>
+  </form>
+</section>

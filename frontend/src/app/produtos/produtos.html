@@ -1,0 +1,45 @@
+<section layout-padding>
+  <form>
+    <div layout="row" layout-wrap>
+      <md-input-container flex="100">
+        <label>Nome</label>
+        <input required ng-model="$ctrl.novoProduto.nome">
+      </md-input-container>
+
+      <md-input-container flex="100">
+        <label>Descrição</label>
+        <textarea ng-model="$ctrl.novoProduto.descricao" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+      </md-input-container>
+
+      <md-input-container flex="50">
+        <label>Peso (Grams)</label>
+        <input required ng-model="$ctrl.novoProduto.peso" type="number" step="1">
+      </md-input-container>
+
+      <md-input-container flex="50">
+        <label>Estoque</label>
+        <input required ng-model="$ctrl.novoProduto.estoque" type="number" step="1">
+      </md-input-container>
+    </div>
+
+    <md-button type="submit" ng-click="$ctrl.salvar()" class="md-fab md-fab-bottom-right" aria-label="Eat cake">
+      <md-icon>add</md-icon>
+    </md-button>
+  </form>
+</section>
+
+
+<section layout-padding layout="row" layout-wrap>
+  <div flex="50" ng-repeat="produto in $ctrl.produtos">
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{produto.nome}}</span>
+          <span class="md-subhead">{{produto.descricao}}</span>
+          <span class="md-subhead">Peso: {{produto.peso}}</span>
+          <span class="md-subhead">Estoque: {{produto.estoque}}</span>
+        </md-card-title-text>
+      </md-card-title>
+    </md-card>
+  </div>
+</section>

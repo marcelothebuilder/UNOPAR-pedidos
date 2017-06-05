@@ -1,0 +1,38 @@
+<section layout-padding>
+  <h1>Cliente</h1>
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">{{$ctrl.pedido.cliente.nome}}</span>
+        <span class="md-subhead">{{$ctrl.pedido.cliente.email}}</span>
+        <span class="md-subhead">{{$ctrl.pedido.cliente.dataNascimento | date}}</span>
+        <span class="md-subhead">{{$ctrl.pedido.cliente.cpf}}</span>
+        <span class="md-subhead">{{$ctrl.pedido.cliente.bairro}}</span>
+        <span class="md-subhead">{{$ctrl.pedido.cliente.cidade.nome}} - {{$ctrl.pedido.cliente.cidade.estado}}</span>
+      </md-card-title-text>
+    </md-card-title>
+  </md-card>
+</section>
+
+<section layout-padding>
+  <h1>Pedido</h1>
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-subhead">Data: {{$ctrl.pedido.data | date}}</span>
+        <span class="md-subhead">Itens: {{$ctrl.pedido.quantidadeItens}}</span>
+      </md-card-title-text>
+    </md-card-title>
+  </md-card>
+</section>
+
+<section layout-padding>
+  <h1>Entrega</h1>
+  <md-list-item ng-repeat="passo in $ctrl.passos">
+    <p> {{passo.data | date }} -  {{passo.estado.descricao}} : {{passo.descricao}} </p>
+  </md-list-item>
+</section>
+
+<md-button ng-click="$ctrl.adicionarEntrada()" class="md-fab md-fab-bottom-right" aria-label="Eat cake">
+  <md-icon>add</md-icon>
+</md-button>

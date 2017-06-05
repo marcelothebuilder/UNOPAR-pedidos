@@ -1,0 +1,71 @@
+<section layout-padding>
+  <h1>Novo pedido para:</h1>
+  <md-card>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">{{$ctrl.cliente.nome}}</span>
+        <span class="md-subhead">{{$ctrl.cliente.email}}</span>
+        <span class="md-subhead">{{$ctrl.cliente.dataNascimento | date}}</span>
+        <span class="md-subhead">{{$ctrl.cliente.cpf}}</span>
+        <span class="md-subhead">{{$ctrl.cliente.bairro}}</span>
+        <span class="md-subhead">{{$ctrl.cliente.cidade.nome}} - {{$ctrl.cliente.cidade.estado}}</span>
+      </md-card-title-text>
+    </md-card-title>
+  </md-card>
+</section>
+
+
+<!-- md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+md-search-text="ctrl.searchText"
+md-selected-item-change="ctrl.selectedItemChange(item)"
+md-item-text="item.name" -->
+<section layout-padding>
+  <form layout="row" name="$ctrl.formNovoItem">
+    <md-autocomplete
+      flex
+      ng-disabled="false"
+      md-no-cache="false"
+      md-selected-item="$ctrl.novoItem.produto"
+      md-search-text="$ctrl.termoPesquisaProduto"
+      md-items="produto in $ctrl.pesquisarProdutos($ctrl.termoPesquisaProduto)"
+      md-min-length="2"
+      md-item-text="produto.nome"
+      required
+      md-floating-label="Selecione um produto"
+      placeholder="Selecione um produto">
+      <md-item-template>
+        <span>
+            <span>
+              Nome: <strong>{{produto.nome}}</strong>
+            </span>
+        </span>
+      </md-item-template>
+    </md-autocomplete>
+
+    <md-input-container flex>
+      <label>Quantidade</label>
+      <input required ng-model="$ctrl.novoItem.quantidade" type="number" step="1">
+    </md-input-container>
+
+    <md-button class="md-primary md-raised md-icon-button" type="submit" ng-click="$ctrl.adicionarItem()" ng-disabled="$ctrl.formNovoItem.$invalid">
+      <md-icon>add</md-icon>
+    </md-button>
+  </form>
+</section>
+
+<section layout-padding layout="row" layout-wrap>
+  <div flex="50" ng-repeat="item in $ctrl.pedido.itens">
+    <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{item.produto.nome}}</span>
+          <span class="md-subhead">Quantidade: {{item.quantidade}}</span>
+        </md-card-title-text>
+      </md-card-title>
+    </md-card>
+  </div>
+</section>
+
+<md-button ng-disabled="!($ctrl.pedido.itens.length > 0)" ng-click="$ctrl.criarPedido()" class="md-fab md-fab-bottom-right" aria-label="Eat cake">
+  <md-icon>save</md-icon>
+</md-button>
