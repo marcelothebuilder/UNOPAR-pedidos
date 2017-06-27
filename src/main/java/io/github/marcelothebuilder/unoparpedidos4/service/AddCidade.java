@@ -42,6 +42,20 @@ public class AddCidade {
 			estadoRepository.save(estado);
 			cidadeRepository.save(cidade);
 		}
+		
+		if (estadoRepository.count() == 1) {
+			Estado estado = new Estado();
+			estado.setNome("São paulo");
+			estado.setUf("SP");
+			
+			Cidade cidade = new Cidade();
+			cidade.setEstado(estado);
+			cidade.setNome("Sampa");
+			
+			estadoRepository.save(estado);
+			cidadeRepository.save(cidade);
+			
+		}
 	}
 	
 }
