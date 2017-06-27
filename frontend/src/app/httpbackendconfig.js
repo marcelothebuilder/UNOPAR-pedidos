@@ -8,7 +8,7 @@ function httpBackendConfig($httpProvider) {
   $httpProvider.interceptors.push(responseDataExtractorInterceptor);
 }
 
-const API_URL = 'http://localhost:8080';
+const API_URL = '';
 
 function responseDataExtractorInterceptor($q) {
   return {
